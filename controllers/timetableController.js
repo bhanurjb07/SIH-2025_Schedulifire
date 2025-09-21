@@ -19,7 +19,7 @@ const generate = async (req, res) => {
       mlScore: e.mlScore,
     }));
 
-    // Ensure we send both date and entries
+    // Ensure we send both date and entriesfgf
     const updatedTimetable = await Timetable.findOneAndUpdate(
       { date: req.body.date },
       { date: req.body.date, entries: formattedEntries },
