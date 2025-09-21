@@ -1,0 +1,46 @@
+<%- include('partials/header', { title: 'Add Faculty' }) %>
+
+<div id="add-faculty-container" class="container">
+  <h1 id="add-faculty-title" class="title">Add a New Faculty</h1>
+
+  <form id="add-faculty-form" class="form" action="/add-faculty" method="POST">
+    <div class="form-group">
+      <label for="name" class="form-label">Faculty Name:</label>
+      <input type="text" id="name" name="name" class="form-input" required />
+    </div>
+    <div class="form-group">
+      <label for="maxLoadPerWeek" class="form-label"
+        >Max Load (Hours/Week):</label
+      >
+      <input
+        type="number"
+        id="maxLoadPerWeek"
+        name="maxLoadPerWeek"
+        class="form-input"
+        required
+        min="1"
+        value="18"
+      />
+    </div>
+    <div class="form-group">
+      <label for="skills" class="form-label">Specialization (Courses):</label>
+      <select id="skills" name="skills" class="form-select" multiple required>
+        <% if (courses && courses.length) { %> <% courses.forEach(course => { %>
+        <option value="<%= course._id %>">
+          <%= course.name %> (<%= course.code %>)
+        </option>
+        <% }) %> <% } else { %>
+        <option disabled>Please add courses first.</option>
+        <% } %>
+      </select>
+      <small>Hold Ctrl/Cmd to select multiple courses.</small>
+    </div>
+    <button type="submit" id="submit-button" class="btn btn-primary">
+      Add Faculty
+    </button>
+  </form>
+
+  <a href="/" id="back-home-link" class="back-link">Back to Home</a>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,38 @@
+<%- include('partials/header', { title: 'Mark Absence' }) %>
+
+<div id="mark-absence-container" class="container">
+  <h1 id="mark-absence-title" class="title">Mark Faculty Absence</h1>
+
+  <form id="mark-absence-form" class="form" action="/mark-absence" method="POST">
+    <div class="form-group">
+      <label for="facultyId" class="form-label">Faculty:</label>
+      <select id="facultyId" name="facultyId" class="form-select" required>
+        <% faculties.forEach(faculty => { %>
+          <option value="<%= faculty._id %>"><%= faculty.name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="slotId" class="form-label">Slot:</label>
+      <select id="slotId" name="slotId" class="form-select" required>
+        <% slots.forEach(slot => { %>
+          <option value="<%= slot._id %>">
+            <%= slot.dayOfWeek %> <%= slot.startTime %>-<%= slot.endTime %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date" class="form-label">Date of Absence:</label>
+      <input type="date" id="date" name="date" class="form-input" required />
+    </div>
+
+    <button type="submit" id="submit-button" class="btn btn-primary">Mark Absent</button>
+  </form>
+
+  <a href="/" id="back-home-link" class="back-link">Back to Home</a>
+</div>
+
+<%- include('partials/footer') %>

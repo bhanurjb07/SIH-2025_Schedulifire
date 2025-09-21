@@ -1,0 +1,53 @@
+<%- include('partials/header', { title: 'Home' }) %>
+
+<main class="home">
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Schedulifire</h1>
+    <p class="tagline">
+      The intelligent scheduling platform for universities and institutions. 
+      Easily manage courses, faculty, batches, and generate conflict-free timetables in minutes.
+    </p>
+    <a href="/generate-timetable" class="btn-primary">Generate Timetable Now</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>Features at a Glance</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📚 Course Management</h3>
+        <p>Create, update, and organize courses efficiently. Assign credits and track progress seamlessly.</p>
+      </div>
+      <div class="feature-card">
+        <h3>👩‍🏫 Faculty Management</h3>
+        <p>Monitor faculty schedules, track absences, and assign courses with ease.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🏫 Batch & Student Groups</h3>
+        <p>Organize students into batches or sections for optimized scheduling and resource allocation.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🕒 Smart Time Slots</h3>
+        <p>Define time slots for lectures, labs, and tutorials, and automatically generate clash-free timetables.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📅 Timetable Generation</h3>
+        <p>Generate complete timetables quickly, saving hours of manual planning and avoiding conflicts.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📈 Analytics & Insights</h3>
+        <p>Visualize schedules, faculty availability, and room usage for smarter decision-making.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call-to-Action Section -->
+  <section class="cta">
+    <h2>Ready to streamline your scheduling?</h2>
+    <p>Get started today and see how Schedulifire can save you time and effort!</p>
+    <a href="/generate-timetable" class="btn-primary">Generate Your Timetable</a>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

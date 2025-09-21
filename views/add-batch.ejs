@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'Add Batch' }) %>
+
+<main class="form-page">
+  <h1 class="page-title">Add a New Batch</h1>
+
+  <form class="styled-form" action="/add-batch" method="POST">
+    <div class="form-group">
+      <label for="program">Program (e.g., B.Tech)</label>
+      <input type="text" id="program" name="program" required />
+    </div>
+
+    <div class="form-group">
+      <label for="section">Section (e.g., A)</label>
+      <input type="text" id="section" name="section" required />
+    </div>
+
+    <div class="form-group">
+      <label for="size">Size (e.g., 60)</label>
+      <input type="number" id="size" name="size" required />
+    </div>
+
+    <button type="submit" class="btn-primary">Add Batch</button>
+  </form>
+
+  <div class="back-link">
+    <a href="/">← Back to Home</a>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

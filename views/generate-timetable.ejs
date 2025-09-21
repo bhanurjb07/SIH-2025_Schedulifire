@@ -1,0 +1,72 @@
+<%- include('partials/header', { title: title || 'Generate Timetable' }) %>
+
+<div id="generate-timetable-container" class="container">
+  <h1 id="generate-timetable-title" class="title">Generate Timetable</h1>
+
+  <form id="generate-timetable-form" class="form" method="POST" action="/generate-timetable">
+    <div class="form-group">
+      <label for="date" class="form-label">Date:</label>
+      <input type="date" id="date" name="date" class="form-input" required />
+    </div>
+
+    <fieldset class="form-fieldset">
+      <legend class="form-legend">Select Batches</legend>
+      <% if (batches && batches.length) { %>
+        <% batches.forEach(batch => { %>
+          <div class="form-checkbox">
+            <input type="checkbox" id="batch-<%= batch._id %>" name="batchIds" value="<%= batch._id %>" class="form-checkbox-input" />
+            <label for="batch-<%= batch._id %>" class="form-checkbox-label"><%= batch.program %> - <%= batch.section %></label>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No batches found. Please add batches first.</p>
+      <% } %>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+      <legend class="form-legend">Select Slots</legend>
+      <% if (slots && slots.length) { %>
+        <% slots.forEach(slot => { %>
+          <div class="form-checkbox">
+            <input type="checkbox" id="slot-<%= slot._id %>" name="slotIds" value="<%= slot._id %>" class="form-checkbox-input" />
+            <label for="slot-<%= slot._id %>" class="form-checkbox-label"><%= slot.dayOfWeek %>: <%= slot.startTime %> - <%= slot.endTime %></label>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No slots found. Please add slots first.</p>
+      <% } %>
+    </fieldset>
+
+    <button type="submit" id="generate-button" class="btn btn-primary">Generate</button>
+  </form>
+
+  <% if (timetable && timetable.length) { %>
+    <h2 id="generated-schedule-title">Generated Schedule</h2>
+    <table id="timetable-table" class="table">
+      <thead>
+        <tr>
+          <th>Batch</th>
+          <th>Course</th>
+          <th>Faculty</th>
+          <th>Room</th>
+          <th>Slot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% timetable.forEach(entry => { %>
+          <tr>
+            <td><%= entry.batchName %></td>
+            <td><%= entry.courseName %></td>
+            <td><%= entry.facultyName %></td>
+            <td><%= entry.roomName %></td>
+            <td><%= entry.slotTime %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else if (error) { %>
+    <p id="timetable-error" class="form-message"><%= error %></p>
+  <% } %>
+</div>
+
+<%- include('partials/footer') %>

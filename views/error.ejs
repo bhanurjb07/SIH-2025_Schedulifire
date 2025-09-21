@@ -1,0 +1,54 @@
+<%- include('partials/header', { title: title || 'Error' }) %>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: 50px;
+    font-family: sans-serif;
+  }
+  .error-container h1 {
+    font-size: 4em;
+    color: #d9534f;
+  }
+  .error-container p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  .error-container pre {
+    text-align: left;
+    background-color: #f3f3f3;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  .error-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+  }
+  .error-container a:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div id="error-container" class="error-container">
+  <h1 id="error-status">Error <%= error.status %></h1>
+  <p id="error-message"><%= error.message %></p>
+  
+  <% if (error.stack) { %>
+    <h2 id="error-stack-title">Stack Trace (Development Mode)</h2>
+    <pre id="error-stack"><code><%= error.stack %></code></pre>
+  <% } %>
+  
+  <a id="error-home-link" href="/">Go to Homepage</a>
+</div>
+
+<%- include('partials/footer') %>

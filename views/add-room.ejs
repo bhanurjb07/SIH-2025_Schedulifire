@@ -1,0 +1,32 @@
+<%- include('partials/header', { title: 'Add Room' }) %>
+
+<div id="add-room-container" class="container">
+  <h1 id="add-room-title" class="title">Add a New Room</h1>
+
+  <form id="add-room-form" class="form" action="/add-room" method="POST">
+    <div class="form-group">
+      <label for="name" class="form-label">Room Name/Number:</label>
+      <input type="text" id="name" name="name" class="form-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="capacity" class="form-label">Capacity:</label>
+      <input type="number" id="capacity" name="capacity" class="form-input" required />
+    </div>
+
+    <div class="form-group">
+      <label for="type" class="form-label">Room Type:</label>
+      <select id="type" name="type" class="form-select" required>
+        <option value="Lecture Hall">Lecture Hall</option>
+        <option value="Lab">Lab</option>
+        <option value="Classroom">Classroom</option>
+      </select>
+    </div>
+
+    <button type="submit" id="submit-button" class="btn btn-primary">Add Room</button>
+  </form>
+
+  <a href="/" id="back-home-link" class="back-link">Back to Home</a>
+</div>
+
+<%- include('partials/footer') %>
