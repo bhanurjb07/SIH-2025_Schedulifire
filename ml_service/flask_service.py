@@ -4,7 +4,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Simple round-robin timetable generator
+# Simple round-robin timetablem generator
 @app.route('/generate', methods=['POST'])
 def generate():
     data = request.json
